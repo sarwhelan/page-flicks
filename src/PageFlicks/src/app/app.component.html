@@ -1,0 +1,147 @@
+<head>
+</head>
+
+<body>
+
+<h1>PageFlicks</h1>
+<br>
+<h5>Hey book worm! Welcome to our e-book library.<br>Enter your email address below to log in and view your personalized features.
+  <br>Or, feel free to search for your favourite author and see our top readers.</h5>
+
+<br><br>
+<button type="button" data-toggle="modal" data-target=".login"  class="btn btn-success">Sign in to Account</button>
+
+<div>
+  <div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Please enter your email address:</h3>
+        <form id = 'loginForm'>
+          <input type = 'text' id = 'username' placeholder="email address" name = 'username' [(ngModel)] = 'username'>
+          <br><br>
+          <input class="btn btn-info" type = 'submit' id = 'login' value = "Sign In" (click) = 'login()'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button type = "button" data-toggle = "modal" data-target = ".searchByAuthor" class = "btn btn-danger">Search By Author</button>
+
+<div>
+  <div class="modal fade searchByAuthor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Enter Author Name: </h3>
+        <input type = 'text' id = 'searchField' placeholder ='Author Name' [(ngModel)] = 'searchCriteria'>
+        <input class="btn btn-info" type = 'submit' id = 'submitSearch' value = 'Search' (click) = 'search()'>
+        <br><br>
+        <ul>
+          <li *ngFor = "let book of bookByAuthor">
+            {{book}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button type = "button" data-toggle = "modal" data-target = ".viewLeaderBoard" class = "btn btn-success" (click) = 'topReader()'>Our Top Readers</button>
+
+<div>
+  <div class="modal fade viewLeaderBoard" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Top Readers: </h3>
+        <ul>
+          <li *ngFor = 'let reader of topReaderList'>
+            {{reader}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button type = "button" data-toggle = "modal" data-target = ".recommended" class = "btn btn-danger" (click) = 'viewRecommendations()' [hidden] = '!signedIn'> Our Recommendations</button>
+
+<div>
+  <div class="modal fade recommended" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Recommended Reads: </h3>
+        <ul>
+          <li *ngFor = "let book of recommendedBooks">
+            {{book}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button type = 'button' data-toggle = "modal" data-target = ".wishList"  class = "btn btn-success" (click) = 'loadWishList()' [hidden] = '!signedIn'> Your Wishlist</button>
+
+<div>
+  <div class="modal fade wishList" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Wish List: </h3>
+        <ul>
+          <li *ngFor = "let book of wishListBooks">
+            {{book.bookTitle}} written by {{book.authorName}}
+            <button type = 'button' id = 'downloadBook' (click) = 'downloadFromWishList(book.bookTitle)'>Download</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<button type = 'button' data-toggle = "modal" data-target = ".updateCreditCard" class = "btn btn-danger" [hidden] = '!signedIn'>Update Payment Method</button>
+
+<div>
+  <div class="modal fade updateCreditCard" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Credit Card Number: </h3>
+        <input type = 'text' id = 'creditCardNum' [(ngModel)] = 'creditCardNum'>
+        <button type = 'button' id = 'update' (click) = updatePaymentInfo()>Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button type = 'button' data-toggle="modal" data-target= ".close" class = 'btn btn-success' (click) = 'close()'>Quit</button>
+
+<div>
+  <div class="modal fade close" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <br>
+        <h3>Connection terminated. Bye!</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
