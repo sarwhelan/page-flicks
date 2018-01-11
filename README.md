@@ -1,5 +1,5 @@
-# PageFlicksWebApp
-Created by Samantha Campbell [250857608] & Sarah Whelan [250778849]
+# Page Flicks
+Created by Samantha Campbell & Sarah Whelan for SE 3309 Database Management Systems 
 
 
 ## Source Code For Website
